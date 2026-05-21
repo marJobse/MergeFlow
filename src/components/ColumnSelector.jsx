@@ -1,4 +1,9 @@
-export default function ColumnSelector({ columnsA, columnsB, config, setConfig }) {
+export default function ColumnSelector({
+  columnsA,
+  columnsB,
+  config,
+  setConfig,
+}) {
   if (!columnsA?.length || !columnsB?.length) return null;
 
   function toggleColumn(column) {
@@ -12,22 +17,40 @@ export default function ColumnSelector({ columnsA, columnsB, config, setConfig }
   }
 
   return (
-    <section className="card wide">
-      <h3>Configuración del cruce</h3>
+    <section className="config-section">
+      <h3>Configuración básica</h3>
       <div className="grid two">
         <label>
           Columna clave del Archivo A
-          <select value={config.keyA} onChange={(event) => setConfig({ ...config, keyA: event.target.value })}>
+          <select
+            value={config.keyA}
+            onChange={(event) =>
+              setConfig({ ...config, keyA: event.target.value })
+            }
+          >
             <option value="">Seleccionar</option>
-            {columnsA.map((column) => <option key={column} value={column}>{column}</option>)}
+            {columnsA.map((column) => (
+              <option key={column} value={column}>
+                {column}
+              </option>
+            ))}
           </select>
         </label>
 
         <label>
           Columna clave del Archivo B
-          <select value={config.keyB} onChange={(event) => setConfig({ ...config, keyB: event.target.value })}>
+          <select
+            value={config.keyB}
+            onChange={(event) =>
+              setConfig({ ...config, keyB: event.target.value })
+            }
+          >
             <option value="">Seleccionar</option>
-            {columnsB.map((column) => <option key={column} value={column}>{column}</option>)}
+            {columnsB.map((column) => (
+              <option key={column} value={column}>
+                {column}
+              </option>
+            ))}
           </select>
         </label>
       </div>
